@@ -29,7 +29,7 @@ def add_password():
             print("Enter 0 or 1")
             pass
     with open(PASSWORDS_FILE, "a") as f:
-        f.write(f"{website},{username},{password}\n")
+        f.write(f"{website}%-%{username}%-%{password}\n")
     print("Password added successfully!")
 
 def get_password():
@@ -37,7 +37,7 @@ def get_password():
     website = input("Enter website name: ")
     with open(PASSWORDS_FILE, "r") as f:
         for line in f:
-            line = line.strip().split(",")
+            line = line.strip().split("%-%")
             if line[0] == website:
                 print("Username:", line[1])
                 print("Password:", line[2])
@@ -48,7 +48,7 @@ def list_passwords():
     """Retrieve all domains from the password manager"""
     with open(PASSWORDS_FILE, 'r') as f:
         first_line = f.readline()
-        first_domain = first_line.split(',')[0]
+        first_domain = first_line.split('%-%')[0]
         print(first_domain)
 
 def main():
