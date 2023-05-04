@@ -45,6 +45,7 @@ def get_password():
         print("Password not found for that website.")
 
 def list_passwords():
+    """Retrieve all domains from the password manager"""
     with open(PASSWORDS_FILE, 'r') as f:
         first_line = f.readline()
         first_domain = first_line.split(',')[0]
